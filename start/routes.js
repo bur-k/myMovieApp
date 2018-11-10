@@ -17,3 +17,7 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+Route.on('/signup').render('auth.signup');
+Route.post('/signup', 'UserController.create').validator('CreateUser');
+Route.on('/login').render('auth.login');
+Route.post('/login', 'UserController.login').validator('LoginUser');
