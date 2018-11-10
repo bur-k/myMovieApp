@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+</head>
+<body>
+<section>
+  <div>
+    <form method="post" action="{{ route('UserController.login') }}">
+      {{ csrfField() }}
+      <p>email</p>
+      <input type="text" id="email" name="email">
+      <p>password</p>
+      <input type="password" id="password" name="password">
+      <button type="submit">Sign in</button>
+    </form>
+  </div>
+</section>
+</body>
+</html>
