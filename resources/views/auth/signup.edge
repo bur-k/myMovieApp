@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign up</title>
+</head>
+<body>
+<section>
+  <div>
+    <form method="post" action="{{ route('UserController.create') }}">
+      {{ csrfField() }}
+      <p>name</p>
+      <input type="text" id="name" name="name">
+      <p>surname</p>
+      <input type="text" id="surname" name="surname">
+      <p>username</p>
+      <input type="text" id="username" name="username">
+      <p>email</p>
+      <input type="email" id="email" name="email">
+      <p>password</p>
+      <input type="password" id="password" name="password">
+      <button type="submit">Sign up</button>
+    </form>
+  </div>
+</section>
+</body>
+</html>

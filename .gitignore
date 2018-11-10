@@ -13,3 +13,4 @@ database/development.sqlite
 
 # User config file
 .editorconfig
+.idea
