@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+  <title>Helios by HTML5 UP</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <div id="header">
+
+    <!-- Inner -->
+    <div class="inner">
+      <header>
+        <h1><a href="index.html" id="logo">Helios</a></h1>
+        <hr />
+        <p>Another fine freebie by HTML5 UP</p>
+      </header>
+      <footer>
+        <a href="#dort" class="button circled scrolly">Start</a>
+      </footer>
+    </div>
+
+    <!-- Nav -->
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="#">Dropdown</a>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Magna phasellus</a></li>
+            <li><a href="#">Etiam dolore nisl</a></li>
+            <li>
+              <a href="#">And a submenu &hellip;</a>
+              <ul>
+                <li><a href="#">Lorem ipsum dolor</a></li>
+                <li><a href="#">Phasellus consequat</a></li>
+                <li><a href="#">Magna phasellus</a></li>
+                <li><a href="#">Etiam dolore nisl</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Veroeros feugiat</a></li>
+          </ul>
+        </li>
+        <li><a href="left-sidebar.html">Left Sidebar</a></li>
+        <li><a href="right-sidebar.html">Right Sidebar</a></li>
+        <li><a href="no-sidebar.html">No Sidebar</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+
+
+    <div id="dort">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Lorem</title>
+
+        <!-- Bootstrap core CSS -->
+        {{style("css/bootstrap.css")}}
+        {{style("https://getbootstrap.com/docs/4.1/examples/album/album.css")}}
+        {{style("css/hoverEffect")}}
+        {{style("css/fontawesome.all")}}
+        <!-- Custom styles for this template -->
+        <link href="album.css" rel="stylesheet">
+      </head>
+
+      <body>
+
+      <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 col-md-7 py-4">
+                <h4 class="text-white">About</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+              <div class="col-sm-4 offset-md-1 py-4">
+                <h4 class="text-white">Contact</h4>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                  <li><a href="#" class="text-white">Like on Facebook</a></li>
+                  <li><a href="#" class="text-white">Email me</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+          <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+              <strong><i class="fa fa-film"></i> Lorem</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main role="main">
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">
+              Lorem ipsum</h1>
+            <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.</p>
+            <p>
+              <a href="#" class="btn btn-primary my-2">Lorem</a>
+              <a href="#" class="btn btn-secondary my-2">Ipsum</a>
+            </p>
+          </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <div class="row">
+              @each(film in filmler.data)
+              <div class="col-md-3">
+                <div class="card mb-3 shadow-sm">
+                  <div class="container1" style="min-height: 400px">
+                    <img class="image" src="{{film.afisurl}}">
+                    <div class="middle">
+                      <button type="button" class="btn btn-success">
+                        <a href="#"><span style="color: white"><i class="fa fa-shopping-cart"></i> Satın Al</span></a></button>
+                    </div>
+                  </div>
+                  <div class="card-body" style="min-height: 300px">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-info">{{film.yil}}</button>
+                      <button type="button" class="btn btn-sm btn-light">{{film.imdbpuani}}</button>
+                      <button type="button" class="btn btn-sm btn-info">{{film.uzunluk}}</button>
+                      <button type="button" class="btn btn-sm btn-light">{{film.fiyat}}₺</button>
+                    </div>
+                    <br>
+                    <br>
+                    <p class="card-text">{{film.ozet}}</p>
+                  </div>
+                </div>
+              </div>
+              @endeach
+            </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                @if(pageNum==1)
+                <li class="page-item disabled">
+                  @else
+                <li class="page-item">
+                  @endif
+                  <a class="page-link" href="?page={{pageNum-1}}">Previous</a>
+                </li>
+                @each(page in range(1, filmler.lastPage+1))
+                @if(page==pageNum)
+                <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                @else
+                <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                @endif
+                @endeach
+                @if(pageNum==filmler.lastPage)
+                <li class="page-item disabled">
+                  @else
+                <li class="page-item">
+                  @endif
+                  <a class="page-link" href="?page={{pageNum+1}}">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </main>
+
+      <footer class="text-muted">
+        <div class="container">
+          <p class="float-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.</p>
+        </div>
+      </footer>
+
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+              integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+              crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+      <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+      <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js"></script>
+      <script src="js/fontawesome.all.js"></script>
+
+      </body>
+
+
+
+
+
+
+
+
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-12">
+
+
+
+          <!-- Copyright -->
+          <div class="copyright">
+            <ul class="menu">
+              <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.dropotron.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/browser.min.js"></script>
+<script src="/js/breakpoints.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>
