@@ -19,8 +19,9 @@ const Route = use('Route')
 // Route.on('/').render('welcome')
 Route.on('/login').render('login')
 Route.on('/signup').render('signup')
-Route.on('/temp').render('temp')
-//Route.get('/dort', 'Cont4Controller.func')
 Route.post('/signup', 'UserController.create')
-Route.post('/signin', 'UserController.login')
+
+Route.on('/temp').render('temp')
+Route.post('/login', 'UserController.login')
+
 Route.get('/', 'Cont4Controller.func')
