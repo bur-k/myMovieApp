@@ -10,6 +10,20 @@ def getTitleIdAndYear(_html):
 	id = url[20:37]
 	year = str(meta['content'][-5:-1])
 	return (title.replace("'",""), id, year)
+	
+def getPoster(_html):
+	div = _html.find('div', class_='poster')
+	img = (div.a.img['src'])
+	return img[:img.find('_V1_')+4]+'.jpg'	
+	
+def getDirectors(_html):
+	div = _html.find('div', class_='credit_summary_item')
+	directors = div.text
+	if ',' in directors:
+		directors = directors[12:-1]
+	else:
+		directors = directors[11:-1]
+	return directors
 
 def getCasts(_html):
 	table = _html.find('table', class_='cast_list')
@@ -74,18 +88,20 @@ def getMovieData(_url):
 	print(title)
 	(budget, runtime) = getRuntimeAndBudget(html) # runtime, budget
 	(rating, releasedate) = getReleaseDateAndRating(html) # release date, rating
+	poster = getPoster(html) # poster
+	directors = getDirectors(html) # directors
 	genre = getGenres(html) # genres
 	(plotMin, plot) = getPlot(html) # plot
 	photoList = getPhotos(html) # movie photos
 	video = getVideos(html) # movie trailer
 	castList = getCasts(html) # casts name, photo, id, role
-	movie = {'title': title, 'movieid': id, 'year': year, 'budget': budget, 'runtime': runtime, 'rating': rating, 'releasedate': releasedate, 'genre': genre, 'plots': [{'min': plotMin},{'all': plot}], 'photos': photoList, 'trailer': video, 'cast': castList}
+	movie = {'title': title, 'movieid': id, 'year': year, 'budget': budget, 'runtime': runtime, 'rating': rating, 'poster': poster, 'directors': directors, 'releasedate': releasedate, 'genre': genre, 'plots': [{'min': plotMin},{'all': plot}], 'photos': photoList, 'trailer': video, 'cast': castList}
 	return movie
 	
 def json2db(_movies):
 	fout = open(outputfile, "w")
 	for m in _movies:
-		movieInsertQuery = 'insert into movies (title, imdbmid, year, budget, runtime, rating,  releasedate, genre, plotmin, plot, photo1, photo2, photo3, trailer) values(\''+m['title']+'\', \''+m['movieid']+'\', \''+m['year']+'\', \''+m['budget']+'\', \''+m['runtime']+'\', \''+m['rating']+'\', \''+m['releasedate']+'\', \''+m['genre']+'\', \''+m['plots'][0]['min']+'\', \''+m['plots'][1]['all']+'\', \''+m['photos'][0]+'\', \''+m['photos'][1]+'\', \''+m['photos'][2]+'\', \''+m['trailer']+'\');'
+		movieInsertQuery = 'insert into movies (title, imdbmid, year, budget, runtime, rating, poster, directors, releasedate, genre, plotmin, plot, photo1, photo2, photo3, trailer) values(\''+m['title']+'\', \''+m['movieid']+'\', \''+m['year']+'\', \''+m['budget']+'\', \''+m['runtime']+'\', \''+m['rating']+'\', \''+m['poster']+'\', \''+m['directors']+'\', \''+m['releasedate']+'\', \''+m['genre']+'\', \''+m['plots'][0]['min']+'\', \''+m['plots'][1]['all']+'\', \''+m['photos'][0]+'\', \''+m['photos'][1]+'\', \''+m['photos'][2]+'\', \''+m['trailer']+'\');'
 		fout.write(movieInsertQuery)
 		for c in m['cast']:
 			castInsertQuery = 'insert into casts (imdbcid, fullname, photo) select \''+c['imdbid']+'\', \''+c['fullname']+'\', \''+c['photo']+'\' where not exists(select imdbcid from casts where imdbcid=\''+c['imdbid']+'\');\n'
