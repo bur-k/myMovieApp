@@ -1,23 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sign up</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Sign Up</title>
+  {{style("https://use.fontawesome.com/releases/v5.5.0/css/all.css")}}
+  {{style("http://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css")}}
+  {{style("http://getbootstrap.com/docs/4.1/examples/sign-in/signin.css")}}
 </head>
-<body>
-<section>
-  <div>
-    <form method="post" action="{{ route('UserController.create') }}">
-      {{ csrfField() }}
-      <p>username</p>
-      <input type="text" id="username" name="username">
-      <p>email</p>
-      <input type="email" id="email" name="email">
-      <p>password</p>
-      <input type="password" id="password" name="password">
-      <button type="submit">Sign up</button>
-    </form>
-  </div>
-</section>
+
+
+<body class="text-center">
+<form class="form-signin" method="post" action="{{route('UserController.create')}}">
+  {{ csrfField() }}
+  <i class="fa fa-film" style="font-size: 128px;"></i>
+  <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+  <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+  <input type="email" class="form-control" id="email" name="email" placeholder="Email address">
+  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+  <p class="mt-5 mb-3 text-muted">&copy; buTube</p>
+</form>
 </body>
 </html>
