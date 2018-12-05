@@ -23,6 +23,7 @@ class MoviesSchema extends Schema {
       table.string('photo2', 254).notNullable()
       table.string('photo3', 254).notNullable()
       table.string('trailer', 254).notNullable()
+      table.decimal('price').notNullable()
       table.timestamps()
     })
   }
