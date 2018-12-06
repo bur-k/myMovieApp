@@ -16,10 +16,12 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('index')
+Route.get('/', 'homeController.func')
+Route.on('/index').render('index')
 Route.on('/signup').render('auth.signup')
 Route.post('/signup', 'UserController.create').validator('CreateUser')
 Route.on('/login').render('auth.login')
 Route.post('/login', 'UserController.login').validator('LoginUser')
 Route.get('/logout', 'UserController.logout')
 Route.get('/listAll', 'UserController.printAllUsers')
+Route.get('/admin/movie/:id', 'admin/movieController.editMovie')
