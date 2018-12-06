@@ -25,14 +25,15 @@
 
     <i class="fa fa-film bigger"></i>
 
-    <h2>Checkout form</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    <h2>SATIN AL</h2>
+    <p class="lead">'{{film.title}}' filmini izlemek için yalnızca birkaç dakikan kaldı!</p>
   </div>
 
   <div class="row">
+    <!---->
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate>
+      <!--<form class="needs-validation" novalidate>-->
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">First name</label>
@@ -51,7 +52,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="username">Username</label>
+          <label for="username">Username<span class="text-muted">(Optional)</span></label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">@</span>
@@ -64,27 +65,33 @@
         </div>
 
         <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <label for="email">Email </label>
           <input type="email" class="form-control" id="email" placeholder="you@example.com">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
         </div>
 
-        <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-          <div class="invalid-feedback">
-            Please enter your shipping address.
-          </div>
-        </div>
+        <!--<div class="mb-3">-->
+          <!--<label for="address">Address</label>-->
+          <!--<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>-->
+          <!--<div class="invalid-feedback">-->
+            <!--Please enter your shipping address.-->
+          <!--</div>-->
+        <!--</div>-->
 
-        <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-        </div>
+        <!--<div class="mb-3">-->
+          <!--<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>-->
+          <!--<input type="text" class="form-control" id="address2" placeholder="Apartment or suite">-->
+        <!--</div>-->
 
+        <p class="card-text">Price </p>
 
+        <button type="button" class="btn btn-primary btn-info">
+          You need to pay <span class="badge badge-light">{{film.price }} $</span>
+        </button>
+
+        <p class="card-text"> </p>
 
         <h4 class="mb-3">Payment</h4>
 
@@ -136,10 +143,22 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <!--<button class="btn btn-primary btn-lg btn-block btn-outline-info" type="submit">-->
+          <!--<a href="{{film.trailer}}"><span>Satın al ve izle!</span></a></button>-->
+        <form action="{{route('MovieLibraryController.func_insert')}}" method="post">
+          {{ csrfField() }}
+          <input type="text" name="fid" value="{{film.id}}" hidden>
+          <input type="text" name="kid" value="{{auth.user.id}}" hidden>
+          <input type="text" name="trailer" value="{{film.trailer}}" hidden>
+
+          <!--<input type="submit" value="Submit">-->
+          <button type="submit" class="btn bn-sm btn-outline-info" style="width:100%">
+            <a href="{{film.trailer}}" target="_blank"><span>Satin Al ve İzle!</span></a></button><br>
+
       </form>
     </div>
   </div>
+
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017-2018 Company Name</p>
@@ -185,6 +204,7 @@
 </script>
 </body>
 </html>
+
 <style>
   .bigger {
     font-size: 128px;

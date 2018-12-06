@@ -1,0 +1,145 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../../../favicon.ico">
+
+  <title>Album example for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  {{style("css/hoverEffect")}}
+
+
+  <!-- Custom styles for this template -->
+  <link href="https://getbootstrap.com/docs/4.1/examples/album/album.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="http://127.0.0.1:3333/">BETFLIX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto"></ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ auth.user.username }}
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="http://127.0.0.1:3333/">My Movies</a>
+            <a class="dropdown-item" href="http://127.0.0.1:3333/logout">Logout</a>
+          </div>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Movies In Your Cart</h1>
+      <!--<p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>-->
+      <p>
+        <!--<a href="#" class="btn btn-primary my-2">Main call to action</a>-->
+        <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+      </p>
+    </div>
+  </section>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        @each(film in filmler.data)
+        <div class="col-md-3">
+          <div class="card mb-3 shadow-sm">
+            <div class="container1" style="min-height: 400px">
+              <img class="image" src="{{film.poster}}">
+              <div class="middle">
+                <button type="button" class="btn btn-info">
+                  <a href="{{film.trailer}}" target="_blank"><span style="color: white">İZLE</span></a></button>
+              </div>
+            </div>
+            <div class="card-body" style="min-height: 100px">
+
+              <!--<span class="badge badge-dark" style="width:100%">{{film.title}}</span><br>-->
+
+              <!--<button type="button" class="btn btn-sm btn-outline-info" style="width:100%; vertical-align: middle; text-transform: uppercase">{{film.title}}</button><br>-->
+              <button type="button" class="btn bn-sm btn-outline-info" style="width:100%; text-transform: uppercase">
+                <a href="http://127.0.0.1:3333/movie/{{film.id}}" style="color:darkslategray"><span>{{film.title}}</span></a></button><br>
+              <p class="card-text"> </p>
+
+              <button type="button" class="btn btn-sm btn-secondary " style="width:49%">{{film.rating}}</button>
+              <button type="button" class="btn  btn-sm btn-secondary" style="width:49%">{{film.runtime}}</button><br>
+
+              <!--<div class="p-1 mb-sm-2 bg-info text-white">film ücreti ₺</div>-->
+
+              <p class="card-text"> </p>
+
+              <!--</div>-->
+              <p class="card-text"> </p>
+
+              <!--<p class="card-text">{{film.plotmin}}</p>-->
+            </div>
+          </div>
+        </div>
+        @endeach
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          @if(pageNum==1)
+          <li class="page-item disabled">
+            @else
+          <li class="page-item">
+            @endif
+            <a class="page-link" href="?page={{pageNum-1}}">Previous</a>
+          </li>
+          @each(page in range(1, filmler.lastPage+1))
+          @if(page==pageNum)
+          <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+          @else
+          <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+          @endif
+          @endeach
+          @if(pageNum==filmler.lastPage)
+          <li class="page-item disabled">
+            @else
+          <li class="page-item">
+            @endif
+            <a class="page-link" href="?page={{pageNum+1}}">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js"></script>
+</body>
+</html>

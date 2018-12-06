@@ -69,47 +69,55 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-8 col-md-7 py-4">
-                <h4 class="text-white">About</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua.</p>
+                <!--<h4 class="text-white">About</h4>-->
+                <!--<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor-->
+                  <!--incididunt ut labore et dolore magna aliqua.</p>-->
               </div>
               <div class="col-sm-4 offset-md-1 py-4">
-                <h4 class="text-white">Contact</h4>
-                <ul class="list-unstyled">
-                  <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                  <li><a href="#" class="text-white">Like on Facebook</a></li>
-                  <li><a href="#" class="text-white">Email me</a></li>
-                </ul>
+                <!--<h4 class="text-white">Contact</h4>-->
+                <!--<ul class="list-unstyled">-->
+                  <!--<li><a href="#" class="text-white">Follow on Twitter</a></li>-->
+                  <!--<li><a href="#" class="text-white">Like on Facebook</a></li>-->
+                  <!--<li><a href="#" class="text-white">Email me</a></li>-->
+                <!--</ul>-->
               </div>
             </div>
           </div>
         </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-          <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-              <strong><i class="fa fa-film"></i> Lorem</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+        <!--<div class="navbar navbar-dark bg-dark shadow-sm">-->
+          <!--<div class="container d-flex justify-content-between">-->
+            <!--<a href="http://127.0.0.1:3333/" class="navbar-brand d-flex align-items-center">-->
+              <!--<strong><i class="fa fa-film"></i>BETFLIX</strong>-->
+            <!--</a>-->
+            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"-->
+                    <!--aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">-->
+              <!--<span class="navbar-toggler-icon"></span>-->
+            <!--</button>-->
+          <!--</div>-->
+        <!--</div>-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <a class="navbar-brand" href="http://127.0.0.1:3333/"><i class="fa fa-film"></i> BETFLIX</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto"></ul>
+            <form class="form-inline mt-2 mt-md-0">
+              <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ auth.user.username }}
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="http://127.0.0.1:3333/">My Movies</a>
+                  <a class="dropdown-item" href="http://127.0.0.1:3333/logout">Logout</a>
+                </div>
+            </form>
           </div>
-        </div>
+        </nav>
       </header>
 
       <main role="main">
-        <section class="jumbotron text-center">
-          <div class="container">
-            <h1 class="jumbotron-heading">
-              Lorem ipsum</h1>
-            <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.</p>
-            <p>
-              <a href="#" class="btn btn-primary my-2">Lorem</a>
-              <a href="#" class="btn btn-secondary my-2">Ipsum</a>
-            </p>
-          </div>
-        </section>
+
 
         <div class="album py-5 bg-light">
           <div class="container">
@@ -121,7 +129,7 @@
                     <img class="image" src="{{film.poster}}">
                     <div class="middle">
                       <button type="button" class="btn btn-success">
-                        <a href="#"><span style="color: white"><i class="fa fa-shopping-cart"></i> Satın Al</span></a></button>
+                        <a href="http://127.0.0.1:3333/satinal/{{film.id}}"><span style="color: white"><i class="fa fa-shopping-cart"></i> Satın Al</span></a></button>
                     </div>
                   </div>
 
@@ -132,7 +140,8 @@
                     <!--<span class="badge badge-dark" style="width:100%">{{film.title}}</span><br>-->
 
                     <!--<button type="button" class="btn btn-sm btn-outline-info" style="width:100%; vertical-align: middle; text-transform: uppercase">{{film.title}}</button><br>-->
-                    <button type="button" class="btn btn-sm btn-outline-info" style="width:100%; text-transform: uppercase; word-wrap:break-spaces"><span>{{film.title}}</span></button><br>
+                    <button type="button" class="btn bn-sm btn-outline-info" style="width:100%; text-transform: uppercase">
+                      <a href="http://127.0.0.1:3333/movie/{{film.id}}" style="color:darkslategray"><span>{{film.title}}</span></a></button><br>
                     <p class="card-text"> </p>
 
                     <button type="button" class="btn btn-sm btn-secondary " style="width:49%">{{film.rating}}</button>
@@ -245,3 +254,6 @@
 
 </body>
 </html>
+
+
+

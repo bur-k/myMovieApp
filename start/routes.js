@@ -19,10 +19,15 @@ const Route = use('Route')
 // Route.on('/').render('welcome')
 Route.on('/login').render('login')
 Route.on('/signup').render('signup')
-Route.get('/satinal','SatinalController.home')
+
+Route.get('/satinal/:id', 'SatinalController.func2')
+Route.post('/satinal/:id', 'SatinalController.func_insert')
+
+Route.get('/movie/:id','MovieController.getMov')
 Route.post('/signup', 'UserController.create')
 
 Route.on('/temp').render('temp')
 Route.post('/login', 'UserController.login')
 
-Route.get('/', 'Cont4Controller.func')
+Route.get('/welcome', 'Cont4Controller.func')
+Route.get('/movielibrary', 'MovieLibraryController.func')
