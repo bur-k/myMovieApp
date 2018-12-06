@@ -19,6 +19,7 @@ const Route = use('Route')
 // Route.on('/').render('welcome')
 Route.on('/login').render('login')
 Route.on('/signup').render('signup')
+Route.get('/satinal','SatinalController.home')
 Route.post('/signup', 'UserController.create')
 
 Route.on('/temp').render('temp')

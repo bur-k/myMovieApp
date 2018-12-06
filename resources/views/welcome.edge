@@ -118,22 +118,34 @@
               <div class="col-md-3">
                 <div class="card mb-3 shadow-sm">
                   <div class="container1" style="min-height: 400px">
-                    <img class="image" src="{{film.afisurl}}">
+                    <img class="image" src="{{film.poster}}">
                     <div class="middle">
                       <button type="button" class="btn btn-success">
                         <a href="#"><span style="color: white"><i class="fa fa-shopping-cart"></i> Satın Al</span></a></button>
                     </div>
                   </div>
+
+
+
                   <div class="card-body" style="min-height: 300px">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-info">{{film.yil}}</button>
-                      <button type="button" class="btn btn-sm btn-light">{{film.imdbpuani}}</button>
-                      <button type="button" class="btn btn-sm btn-info">{{film.uzunluk}}</button>
-                      <button type="button" class="btn btn-sm btn-light">{{film.fiyat}}₺</button>
-                    </div>
-                    <br>
-                    <br>
-                    <p class="card-text">{{film.ozet}}</p>
+
+                    <!--<span class="badge badge-dark" style="width:100%">{{film.title}}</span><br>-->
+
+                    <!--<button type="button" class="btn btn-sm btn-outline-info" style="width:100%; vertical-align: middle; text-transform: uppercase">{{film.title}}</button><br>-->
+                    <button type="button" class="btn btn-sm btn-outline-info" style="width:100%; text-transform: uppercase; word-wrap:break-spaces"><span>{{film.title}}</span></button><br>
+                    <p class="card-text"> </p>
+
+                    <button type="button" class="btn btn-sm btn-secondary " style="width:49%">{{film.rating}}</button>
+                    <button type="button" class="btn  btn-sm btn-secondary" style="width:49%">{{film.runtime}}</button><br>
+
+                    <!--<div class="p-1 mb-sm-2 bg-info text-white">film ücreti ₺</div>-->
+
+                    <p class="card-text"> </p>
+
+                    <!--</div>-->
+                    <p class="card-text"> </p>
+
+                    <p class="card-text">{{film.plotmin}}</p>
                   </div>
                 </div>
               </div>
