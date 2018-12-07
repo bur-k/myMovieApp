@@ -1,116 +1,74 @@
 <!DOCTYPE HTML>
-<!--
-	Helios by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
-  <title>Helios by HTML5 UP</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+  <title>Homepage</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link rel="stylesheet" href="/css/noscript.css"/>
+  {{style("http://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css")}}
+  {{style("https://getbootstrap.com/docs/4.1/examples/album/album.css")}}
+  {{style("css/hoverEffect")}}
+  {{style("https://use.fontawesome.com/releases/v5.5.0/css/all.css")}}
 </head>
 <body class="homepage is-preload">
 <div id="page-wrapper">
-
-  <!-- Header -->
+  @loggedIn
+  @else
   <div id="header">
-
-    <!-- Inner -->
     <div class="inner">
       <header>
         <h1><a href="/" id="logo">BETFLIX</a></h1>
-        <hr />
+        <hr/>
         <p>Easy way to watch movies</p>
       </header>
       <footer>
         <a href="#dort" class="btn btn-lg btn-secondary scrolly">Start</a>
       </footer>
     </div>
-
-    <!-- Nav -->
     <nav id="nav">
       <ul>
         <li><a href="/">Home</a></li>
-
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Signup</a></li>
       </ul>
     </nav>
-
   </div>
-
-
-
+  @endloggedIn
   <div id="dort">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-
-      <title>Lorem</title>
-
-      <!-- Bootstrap core CSS -->
-      {{style("http://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css")}}
-      {{style("https://getbootstrap.com/docs/4.1/examples/album/album.css")}}
-      {{style("css/hoverEffect")}}
-      {{style("https://use.fontawesome.com/releases/v5.5.0/css/all.css")}}
-      <!-- Custom styles for this template -->
-      <link href="album.css" rel="stylesheet">
-    </head>
-
     <body>
-
+    @loggedIn
     <header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white">About</h4>
-              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.</p>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="http://127.0.0.1:3333/">BETFLIX</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto"></ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <div class="btn-group">
+              @loggedIn
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                {{ auth.user.username }}
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="/library">My Movies</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+              </div>
+              @else
+              <a class="btn btn-danger" href="/signup" role="button">Register</a>
+              <a class="btn btn-secondary" href="/login" role="button">Login</a>
+              @endloggedIn
             </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Contact</h4>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
-              </ul>
-            </div>
-          </div>
+          </form>
         </div>
-      </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <strong><i class="fa fa-film"></i> Lorem</strong>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                  aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>
+      </nav>
     </header>
-
+    @endloggedIn
     <main role="main">
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">
-            Lorem ipsum</h1>
-          <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Lorem</a>
-            <a href="#" class="btn btn-secondary my-2">Ipsum</a>
-          </p>
-        </div>
-      </section>
-
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">
@@ -118,22 +76,24 @@
             <div class="col-md-3">
               <div class="card mb-3 shadow-sm">
                 <div class="container1" style="min-height: 400px">
-                  <img class="image" src="{{film.afisurl}}">
+                  <img class="image" src="{{film.poster}}" style="height: 400px; width: 253.5px">
                   <div class="middle">
                     <button type="button" class="btn btn-success">
-                      <a href="#"><span style="color: white"><i class="fa fa-shopping-cart"></i> Satın Al</span></a></button>
+                      <a href="/purchase/{{film.id}}"><span style="color: white"><i
+                        class="fa fa-shopping-cart"></i> Purchase</span></a></button>
                   </div>
                 </div>
-                <div class="card-body" style="min-height: 300px">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-info">{{film.yil}}</button>
-                    <button type="button" class="btn btn-sm btn-light">{{film.imdbpuani}}</button>
-                    <button type="button" class="btn btn-sm btn-info">{{film.uzunluk}}</button>
-                    <button type="button" class="btn btn-sm btn-light">{{film.fiyat}}₺</button>
-                  </div>
+                <div class="card-body" style="min-height: 350px">
+                  <button type="button" class="btn bn-sm btn-outline-info" style="width: 100%">
+                    <a href="/movie/{{film.id}}" style="color:darkslategray">
+                      <span style="font-size:larger;">{{film.title}}</span>
+                    </a>
+                  </button>
                   <br>
-                  <br>
-                  <p class="card-text">{{film.ozet}}</p>
+                  <p class="card-text"></p>
+                  <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%">{{film.rating}}</button>
+                  <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%">{{film.runtime}}</button>
+                  <p class="card-text" style="margin-top: 12px">{{film.plotmin}}</p>
                 </div>
               </div>
             </div>
@@ -167,69 +127,28 @@
         </div>
       </div>
     </main>
-
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.</p>
       </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
-    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js"></script>
-    <script src="js/fontawesome.all.js"></script>
-
+    <script src="/js/jquery.dropotron.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/browser.min.js"></script>
+    <script src="/js/breakpoints.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
     </body>
-
-
-
-
-
-
-
-
-  </div>
-  <hr />
-  <div class="row">
-    <div class="col-12">
-
-
-
-      <!-- Copyright -->
-      <div class="copyright">
-        <ul class="menu">
-          <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-      </div>
-
-    </div>
-
   </div>
 </div>
-</div>
-
-</div>
-
-<!-- Scripts -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.dropotron.min.js"></script>
-<script src="/js/jquery.scrolly.min.js"></script>
-<script src="/js/jquery.scrollex.min.js"></script>
-<script src="/js/browser.min.js"></script>
-<script src="/js/breakpoints.min.js"></script>
-<script src="/js/util.js"></script>
-<script src="/js/main.js"></script>
-
 </body>
 </html>
+
+
+

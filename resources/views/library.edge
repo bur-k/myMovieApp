@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../../../favicon.ico">
+  <title>Album example for Bootstrap</title>
+  <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  {{style("css/hoverEffect")}}
+  <link href="https://getbootstrap.com/docs/4.1/examples/album/album.css" rel="stylesheet">
+  {{style("https://use.fontawesome.com/releases/v5.5.0/css/all.css")}}
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="http://127.0.0.1:3333/">BETFLIX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto"></ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <div class="btn-group">
+          @loggedIn
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            {{ auth.user.username }}
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/library">My Movies</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+          @else
+          <a class="btn btn-danger" href="/signup" role="button">Register</a>
+          <a class="btn btn-secondary" href="/login" role="button">Login</a>
+          @endloggedIn
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Movies In Your Library</h1>
+    </div>
+  </section>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        @each(film in filmler.data)
+        <div class="col-md-3">
+          <div class="card mb-3 shadow-sm">
+            <div class="container1" style="min-height: 400px">
+              <img class="image" src="{{film.poster}}" style="height: 400px; width: 253.5px">
+              <div class="middle">
+                <button type="button" class="btn btn-info">
+                  <a href="{{film.trailer}}" target="_blank"><span style="color: white"><i
+                    class="fa fa-play-circle"></i> Play</span></a></button>
+              </div>
+            </div>
+            <div class="card-body" style="min-height: 125px">
+              <button type="button" class="btn bn-sm btn-outline-info" style="width: 100%">
+                <a href="/movie/{{film.id}}" style="color:darkslategray">
+                  <span style="font-size:larger;">{{film.title}}</span>
+                </a>
+              </button>
+              <br>
+              <p class="card-text"></p>
+              <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%">{{film.rating}}</button>
+              <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%">{{film.runtime}}</button>
+            </div>
+          </div>
+        </div>
+        @endeach
+      </div>
+      <br>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          @if(pageNum==1)
+          <li class="page-item disabled">
+            @else
+          <li class="page-item">
+            @endif
+            <a class="page-link" href="?page={{pageNum-1}}">Previous</a>
+          </li>
+          @each(page in range(1, filmler.lastPage+1))
+          @if(page==pageNum)
+          <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+          @else
+          <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+          @endif
+          @endeach
+          @if(pageNum==filmler.lastPage)
+          <li class="page-item disabled">
+            @else
+          <li class="page-item">
+            @endif
+            <a class="page-link" href="?page={{pageNum+1}}">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</main>
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+

@@ -7,7 +7,7 @@ class homeController {
     const filmler = await Database
       .table('movies')
       .select('*')
-      .paginate(pageNum, 4);
+      .paginate(pageNum, 8);
     return view.render('home', {filmler, pageNum})
   }
 }

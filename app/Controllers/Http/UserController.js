@@ -11,13 +11,6 @@ class UserController {
     return response.redirect('/');
   }
 
-  async printAllUsers() {
-    const userList = await Database
-      .table('users')
-      .select('username', 'email');
-    return userList;
-  }
-
   async login({request, auth, response, session}) {
     const {email, password} = request.all();
     try {

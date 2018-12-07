@@ -17,11 +17,19 @@
 const Route = use('Route')
 
 Route.get('/', 'homeController.func')
-Route.on('/index').render('index')
+
 Route.on('/signup').render('auth.signup')
 Route.post('/signup', 'UserController.create').validator('CreateUser')
+
 Route.on('/login').render('auth.login')
 Route.post('/login', 'UserController.login').validator('LoginUser')
+
 Route.get('/logout', 'UserController.logout')
-Route.get('/listAll', 'UserController.printAllUsers')
+
 Route.get('/admin/movie/:id', 'admin/movieController.editMovie')
+
+Route.get('/movie/:id', 'movieController.getMov')
+
+Route.get('/library', 'libraryController.func')
+Route.post('/library', 'purchaseController.func_insert')
+Route.get('/purchase/:id', 'purchaseController.func2')
