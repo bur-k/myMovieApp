@@ -12,7 +12,7 @@
 </head>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="http://127.0.0.1:3333/">BETFLIX</a>
+    <a class="navbar-brand" href="http://127.0.0.1:3333/"> <i class="fa fa-film" style="font-size: 20px;"></i> BETFLIX</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -127,13 +127,13 @@
         </div>
       </div>
       <hr class="mb-4">
-      <form action="{{route('purchaseController.func_insert')}}" method="post">
+      <form action="{{route('purchaseController.user_moviesInsert')}}" method="post">
         {{ csrfField() }}
         <input type="text" name="fid" value="{{film.id}}" hidden>
         <input type="text" name="kid" value="{{auth.user.id}}" hidden>
         <input type="text" name="trailer" value="{{film.trailer}}" hidden>
         <button type="submit" class="btn bn-sm btn-outline-info" style="width:100%">
-          <a href="{{film.trailer}}" target="_blank"><span>Complete the purchase and ENJOY THE MOVIE!</span></a></button>
+          <a target="http://127.0.0.1:3333/library/"><span>Complete the purchase and ENJOY THE MOVIE!</span></a></button>
         <br>
       </form>
     </div>

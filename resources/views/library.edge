@@ -15,7 +15,7 @@
 <body>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="http://127.0.0.1:3333/">BETFLIX</a>
+    <a class="navbar-brand" href="http://127.0.0.1:3333/"> <i class="fa fa-film" style="font-size: 20px;"></i> BETFLIX</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -57,9 +57,11 @@
             <div class="container1" style="min-height: 400px">
               <img class="image" src="{{film.poster}}" style="height: 400px; width: 253.5px">
               <div class="middle">
-                <button type="button" class="btn btn-info">
+                <button type="button" class="btn btn-info" style="width: 100px">
                   <a href="{{film.trailer}}" target="_blank"><span style="color: white"><i
-                    class="fa fa-play-circle"></i> Play</span></a></button>
+                    class="fa fa-play-circle"></i> Play</span></a></button><button type="button" class="btn btn-danger" style="margin-top: 10px; width: 100px">
+                  <a href="/library/delete/{{film.id}}"><span style="color: white"><i
+                    class="fa fa-trash"></i> Remove</span></a></button>
               </div>
             </div>
             <div class="card-body" style="min-height: 125px">
@@ -70,8 +72,8 @@
               </button>
               <br>
               <p class="card-text"></p>
-              <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%">{{film.rating}}</button>
-              <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%">{{film.runtime}}</button>
+              <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%"> <i class="fa fa-star-half-alt" style="font-size: 14px;"></i> {{film.rating}}</button>
+              <button type="button" class="btn btn-sm btn-secondary" style="width:48.5%"> <i class="fa fa-clock" style="font-size: 14px;"></i> {{film.runtime}}</button>
             </div>
           </div>
         </div>

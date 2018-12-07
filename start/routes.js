@@ -31,5 +31,6 @@ Route.get('/admin/movie/:id', 'admin/movieController.editMovie')
 Route.get('/movie/:id', 'movieController.getMov')
 
 Route.get('/library', 'libraryController.func')
-Route.post('/library', 'purchaseController.func_insert')
+Route.post('/library', 'purchaseController.user_moviesInsert')
+Route.get('/library/delete/:id', 'libraryController.del')
 Route.get('/purchase/:id', 'purchaseController.func2')
