@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="../../../../favicon.ico">
-  <title>Album example for Bootstrap</title>
+  <title>My Movies</title>
   <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
   {{style("css/hoverEffect")}}
   <link href="https://getbootstrap.com/docs/4.1/examples/album/album.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 <body>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="http://127.0.0.1:3333/"> <i class="fa fa-film" style="font-size: 20px;"></i> BETFLIX</a>
+    <a class="navbar-brand" href="http://127.0.0.1:3333/">  <i class="fa fa-film" style="font-size: 20px;"></i><strong class="text-white"> BETFLIX</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,7 @@
               <img class="image" src="{{film.poster}}" style="height: 400px; width: 253.5px">
               <div class="middle">
                 <button type="button" class="btn btn-info" style="width: 100px">
-                  <a href="{{film.trailer}}" target="_blank"><span style="color: white"><i
+                  <a href="/play/{{film.id}}" target="_blank"><span style="color: white"><i
                     class="fa fa-play-circle"></i> Play</span></a></button><button type="button" class="btn btn-danger" style="margin-top: 10px; width: 100px">
                   <a href="/library/delete/{{film.id}}"><span style="color: white"><i
                     class="fa fa-trash"></i> Remove</span></a></button>

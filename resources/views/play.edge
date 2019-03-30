@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+  <title>{{ film.title }} ({{ film.year }})</title>
+  <link href="http://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/docs/4.1/examples/carousel/carousel.css" rel="stylesheet">
+  {{style("https://use.fontawesome.com/releases/v5.5.0/css/all.css")}}
+</head>
+<body style="background-color: black;">
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="http://127.0.0.1:3333/"> <i class="fa fa-film" style="font-size: 20px;"></i><strong
+      class="text-white"> BETFLIX</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto"></ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <div class="btn-group">
+          @loggedIn
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            {{ auth.user.username }}
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/library">My Movies</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+          @else
+          <a class="btn btn-danger" href="/signup" role="button">Register</a>
+          <a class="btn btn-secondary" href="/login" role="button">Login</a>
+          @endloggedIn
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>
+<main role="main">
+  <br>
+  <div class="row" align="center">
+    <div class="col-md-12">
+      <video id="video" width="1600" controls></video>
+    </div>
+  </div>
+  <div class="row" align="right">
+    <div class="col-md-10">
+    </div>
+    <div class="col-md-1">
+      <button type="button" class="btn btn-dark" onclick="window.history.back();"><i class="fa fa-arrow-circle-left" style="font-size: 15px;"></i> Back</button>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="http://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+<script src="http://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+<script src="https://video-dev.github.io/hls.js/dist/hls.js"></script>
+<script>
+  if (Hls.isSupported()) {
+    var video = document.getElementById('video');
+    var hls = new Hls();
+    hls.loadSource('https://cors-anywhere.herokuapp.com/https://srv48.filmmodu.xyz' + {{ movieURL }} + '720p.en.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      video.play();
+    });
+  }
+</script>
+</body>
+</html>

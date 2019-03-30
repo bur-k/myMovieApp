@@ -21,28 +21,68 @@
     </div>
   </div>
   <div>
-    <strong>id</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.id}}>
-    <strong>title</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.title}}>
-    <strong>directors</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.directors}}>
-    <strong>imdbmid</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.imdbmid}}>
-    <strong>year</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.year}}>
-    <strong>budget</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.budget}}>
-    <strong>runtime</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.runtime}}>
-    <strong>rating</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.rating}}>
-    <strong>releasedate</strong>
-    <input type="date" class="form-control" id="asd" name="asd" value={{movie.releasedate}}>
-    <strong>genre</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.genre}}>
-    <strong>price</strong>
-    <input type="text" class="form-control" id="asd" name="asd" value={{movie.price}}>
+    <form action="/admin/movie/{{movie.id}}" method="post">
+      {{ csrfField() }}
+      <div class="row">
+        <div class="col-md-6">
+          <strong>id</strong>
+          <input type="text" class="form-control" id="id" name="id" value="{{movie.id}}" disabled>
+        </div>
+        <div class="col-md-6">
+          <strong>title</strong>
+          <input type="text" class="form-control" id="title" name="title" value="{{movie.title}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <strong>directors</strong>
+          <input type="text" class="form-control" id="directors" name="directors" value="{{movie.directors}}">
+        </div>
+        <div class="col-md-6">
+          <strong>imdbmid</strong>
+          <input type="text" class="form-control" id="imdbmid" name="imdbmid" value="{{movie.imdbmid}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <strong>year</strong>
+          <input type="text" class="form-control" id="year" name="year" value="{{movie.year}}">
+        </div>
+        <div class="col-md-6">
+          <strong>budget</strong>
+          <input type="text" class="form-control" id="budget" name="budget" value="{{movie.budget}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <strong>runtime</strong>
+          <input type="text" class="form-control" id="runtime" name="runtime" value="{{movie.runtime}}">
+        </div>
+        <div class="col-md-4">
+          <strong>rating</strong>
+          <input type="text" class="form-control" id="rating" name="rating" value="{{movie.rating}}">
+        </div>
+        <div class="col-md-4">
+          <strong>price</strong>
+          <input type="text" class="form-control" id="price" name="price" value="{{movie.price}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <strong>releasedate</strong>
+          <input type="text" class="form-control" id="releasedate" name="releasedate" value="{{movie.releasedate}}">
+        </div>
+        <div class="col-md-6">
+          <strong>genre</strong>
+          <input type="text" class="form-control" id="genre" name="genre" value="{{movie.genre}}">
+        </div>
+      </div>
+      <strong>photo1</strong>
+      <input type="text" class="form-control" id="photo1" name="photo1" value="{{movie.photo1}}">
+      <strong>photo2</strong>
+      <input type="text" class="form-control" id="photo2" name="photo2" value="{{movie.photo2}}">
+      <button type="submit" class="btn bn-sm btn-outline-info float-right col-2 bg-purple text-white" style="margin-top: 12px;">Update</button>
+    </form>
   </div>
 </main>
 <!-- Optional JavaScript -->

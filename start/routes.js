@@ -26,9 +26,10 @@ Route.post('/login', 'UserController.login').validator('LoginUser')
 
 Route.get('/logout', 'UserController.logout')
 
-Route.get('/admin/movie/:id', 'admin/movieController.editMovie')
+Route.get('/admin/movie/:id', 'admin/movieController.updateMovie')
 
 Route.get('/movie/:id', 'movieController.getMov')
+Route.get('/play/:id', 'movieController.playMov')
 
 Route.get('/library', 'libraryController.func')
 Route.post('/library', 'purchaseController.user_moviesInsert')

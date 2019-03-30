@@ -6,14 +6,16 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-  <title>{{ film2.title }} ({{ film2.year }})</title>
+  <title>{{ film.title }} ({{ film.year }})</title>
   <link href="http://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="http://getbootstrap.com/docs/4.1/examples/carousel/carousel.css" rel="stylesheet">
+  {{style("https://use.fontawesome.com/releases/v5.5.0/css/all.css")}}
 </head>
 <body>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="http://127.0.0.1:3333/"> <i class="fa fa-film" style="font-size: 20px;"></i> BETFLIX</a>
+    <a class="navbar-brand" href="http://127.0.0.1:3333/"> <i class="fa fa-film" style="font-size: 20px;"></i><strong
+      class="text-white"> BETFLIX</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -48,19 +50,19 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active" style="height: 48rem;">
-        <img class="first-slide img2" src={{ film2.photo1 }} alt="First slide" style="height: auto; width: 100%;">
+        <img class="first-slide img2" src={{ film.photo1 }} alt="First slide" style="height: auto; width: 100%;">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h2 class="featurette-heading">{{film2.title}} <span class="text-muted">({{film2.year}})</span>
+            <h2 class="featurette-heading">{{film.title}} <span class="text-muted">({{film.year}})</span>
             </h2>
           </div>
         </div>
       </div>
       <div class="carousel-item" style="height: 48rem;">
-        <img class="second-slide img2" src={{ film2.photo2 }} alt="Second slide" style="height: auto; width: 100%;">
+        <img class="second-slide img2" src={{ film.photo2 }} alt="Second slide" style="height: auto; width: 100%;">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h2 class="featurette-heading">{{film2.title}} <span class="text-muted">({{film2.year}})</span>
+            <h2 class="featurette-heading">{{film.title}} <span class="text-muted">({{film.year}})</span>
             </h2>
           </div>
         </div>
@@ -78,26 +80,27 @@
   <div class="container marketing">
     <div class="row featurette">
       <div class="col-md-7">
-        <p style="font-size:110%;" class="lead">{{ film2.plot }}</p>
+        <p style="font-size:110%;" class="lead">{{ film.plot }}</p>
         <span class="badge badge-secondary">Directors: </span>
-        <p style="font-size:110%;" class="lead">{{ film2.directors }}</p>
-        <span class="badge badge-secondary">IMDB Rating: </span>
-        <p style="font-size:110%;" class="lead">{{ film2.rating }}</p>
+        <p style="font-size:110%;" class="lead">{{ film.directors }}</p>
         <span class="badge badge-secondary">Genre: </span>
-        <p style="font-size:110%;" class="lead">{{ film2.genre }}</p>
-        <a class="btn btn-info" href="/purchase/{{film2.id}}" role="button">Buy: ${{film2.price}}</a>
+        <p style="font-size:110%;" class="lead">{{ film.genre }}</p>
+        <a href="https://www.imdb.com{{ film.imdbmid }}">
+          <img src="/images/imdb_button.png" height="18" width="36"></a>
+        <p style="font-size:110%;" class="lead">{{film.rating }}</p>
+        <a class="btn btn-info" href="/purchase/{{film.id}}" role="button">Buy: ${{film.price}}</a>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-fluid mx-auto" src={{ film2.poster }} alt="Generic placeholder image">
+        <img class="featurette-image img-fluid mx-auto" src={{ film.poster }} alt="Generic placeholder image">
       </div>
     </div>
     <hr class="featurette-divider">
     <h5 style="font-size:200%; text-align:center;">CASTING</h5><br>
     <div class="row">
-      @each(ent in film)
+      @each(ent in casts)
       <div class="col-lg-2">
         <img class="rounded-circle cent" src={{ ent.photo }} width="70" height="100">
-        <h5 style="font-size:90%; text-align:center;">{{ ent.fullname }} </h5>
+        <h5 style="font-size:90%; text-align:center; margin-top: 3px; margin-bottom: unset">{{ ent.fullname }} </h5>
         <h6 style="font-size:70%; text-align:center;"><i>({{ ent.role }}) </i></h6>
       </div><!-- /.col-lg-4 -->
       @endeach
@@ -107,24 +110,24 @@
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading"><span class="text-muted"><a
-          href="http://127.0.0.1:3333/movie/{{film3.id}}"
-          style="  color:black;">{{film3.title}}</a></span> ({{film3.year}})</h2>
-        <p class="lead" style="margin-top: 24px">{{film3.plotmin}}</p>
+          href="http://127.0.0.1:3333/movie/{{film1.id}}"
+          style="  color:black;">{{film1.title}}</a></span> ({{film1.year}})</h2>
+        <p class="lead" style="margin-top: 24px">{{film1.plotmin}}</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <img class="featurette-image img-fluid mx-auto" src={{film3.poster}}>
+        <img class="featurette-image img-fluid mx-auto" src={{film1.poster}}>
       </div>
     </div>
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading"><span class="text-muted"><a
-          href="http://127.0.0.1:3333/movie/{{film4.id}}"
-          style="color:black;">{{film4.title}}</a></span> ({{film4.year}})</h2>
-        <p class="lead" style="margin-top: 24px">{{film4.plotmin}}</p>
+          href="http://127.0.0.1:3333/movie/{{film2.id}}"
+          style="color:black;">{{film2.title}}</a></span> ({{film2.year}})</h2>
+        <p class="lead" style="margin-top: 24px">{{film2.plotmin}}</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-fluid mx-auto" src={{film4.poster}}>
+        <img class="featurette-image img-fluid mx-auto" src={{film2.poster}}>
       </div>
     </div>
     <hr class="featurette-divider">
